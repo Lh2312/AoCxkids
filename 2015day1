@@ -10,7 +10,8 @@
 # My answer: 138
 # 
 
-# open the input and read it. Your input is a long long line of parentheses, choose an appropriate [VARNAME1]
+# open the input and read it. Your input is a long long line of parentheses,
+# representing floors, choose an appropriate [VARNAME1]
 filename=open("C:\\...\\2015Day1.txt", "r") 
 [VARNAME1] = filename.read()
 
