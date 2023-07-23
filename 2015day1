@@ -31,7 +31,7 @@ for [VARNAME3] in [VARNAME1]:
     elif [(STATEMENT]):
         [DECREASE VARNAME2 by 1]
 
-# you can now print you [VARNAME2] and submit your answer :)
+# you can now print your [VARNAME2] and submit your answer :)
 print ([VARNAME2)
 
 # Part 2: Now, given the same instructions, find the position of the first character that causes him to enter 
