@@ -9,11 +9,7 @@
 # Part 1: To what floor do the instructions take Santa?
 # My answer: 138
 # 
-```ruby
-require 'redcarpet'
-markdown = Redcarpet.new("Hello World!")
-puts markdown.to_html
-```
+
 # open the input and read it. Your input is a long long line of parentheses,
 # representing floors, choose an appropriate [VARNAME1]
 filename=open("C:\\...\\2015Day1.txt", "r") 
