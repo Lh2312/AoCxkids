@@ -9,7 +9,144 @@
 #
 # The elves also need a little extra paper for each present: the area of the smallest side.
 #
-# For example, a present with dimensions 2x3x4 requires 2*2*3 + 2*3*4 + 2*4*2 = 52 square feet 
-# of wrapping paper. The smallest side is 2*3 = 6, for a total of 52+6=58 square feet.
+# For example, your input might be 2x3x4, meaning the present is a box
+# with dimensions 2x3x4 that  requires 2*2*3 + 2*3*4 + 2*4*2 = 52 square feet 
+# of wrapping paper. The smallest side for extra paper is 2*3 = 6, for a total of 52+6=58 square feet.
 #
 # My answer: 1598415
+#
+
+# open the input and read it. Your input is a list of dimensions that represent 
+# length * width * height
+# but in the form: 2x3x4 
+
+# open the input
+filename=open("C:\\...\\2015Day2.txt", "r") 
+
+# read the input file into [VARNAME1]
+[VARNAME1] = filename.read()
+
+# [VARNAME1] is now single very long list of l*w*h\n
+# you want a list with one package per line
+[VARNAME1] = [VARNAME1].splitlines()
+
+# alternatively you could replace the last 2 instructions with just
+# [VARNAME1] = filename.read().splitlines()
+
+# you want to get rid of those useless "x" in between your dimensions
+# you can use a FOR loop, but this time we'll write it in this
+# different form:   
+[VARNAME1] = [[VARNAME2].split('x') for [VARNAME2] in [VARNAME1]]
+
+# look at [VARNAME1] in your variable explorer window
+# each line should be something like ['2', '3', '4']
+# you need to do some math with these numbers, but right now they are strings (see the quotation marks?)
+# next step will be casting them to integers with MAP
+[VARNAME1] = [list(map(int, [VARNAME2])) for [VARNAME2] in [VARNAME1]]
+
+# look again at [VARNAME1] in your variable explorer window
+# each line should be something like [2, 3, 4]
+# no more quotation marks! These are INTEGERS, and you are ready to do some math
+
+# declare a new variable to keep track of how much paper your will need.
+# at the beginning, you have no paper at all
+[VARNAME3] = [INTEGER]
+
+# let's start the FOR loop
+for [VARNAME2] in [VARNAME1]:
+
+# in [VARNAME2] you have three values, length, width and height of each package
+# the length is the value in position 0: [VARNAME2][0]
+# the width is the value in position 1: [VARNAME2][1]
+# the height is the value in position 2: [VARNAME2][2]
+# ! [0] [1] and [2] need brackets, if your [VARNAME2] is pluto, you'll have pluto[0], pluto[1], pluto[2]
+
+# in [VARNAME4] you'll put 3 new numbers, representing the areas of the three different sides you have
+# in a rectangular prism (these numbers are in brackets)
+# [VARNAME4] = [length*width   width*height   length *height]
+    [VARNAME4] = [ [VARNAME2][0]*[VARNAME2][1], [VARNAME2][1]*[VARNAME2][2], [VARNAME2][0]*[VARNAME2][2] ]
+
+# now you can calculate how much paper you need:
+# two * the sum of the sides + the SMALLER side as extra paper
+# to find the smaller side, you can use the function MIN, 
+# that will return you the least of the 3 areas
+    [VARNAME3] += 2*([VARNAME4][0] + [VARNAME4][1] + [VARNAME4]) + min([VARNAME4])
+
+# all done, just print the value of your [VARNAME3] out of the loop
+print ([VARNAME3])
+
+
+# Part 2: The elves are also running low on ribbon. 
+# Ribbon is all the same width, so they only have to worry about the length they need to order, 
+# which they would again like to be exact.
+#
+# The ribbon required to wrap a present is the shortest distance around its sides, 
+# or the smallest perimeter of any one face. 
+#
+# Each present also requires a bow made out of ribbon as well; 
+# the feet of ribbon required for the perfect bow is equal to the cubic feet of volume of the present. 
+# Don't ask how they tie the bow, though; they'll never tell.
+#
+# For example: you have a present with dimensions 2x3x4.
+# the SMALLEST SIDE is 2x3 
+# the perimeter of the smallest side is 2*(2+3) = 10
+# and then you need the volume, 2*3*4 = 24 for the bow
+# in total, you need 34 feet of ribbon
+#
+# How many total feet of ribbon should they order?
+#
+# my answer is: 3812909
+#
+# add this code after your last PRINT instruction
+# declare a new variable to keep track you how much ribbon you need
+#
+[VARNAME5] = [INTEGER]
+
+for [VARNAME2] in [VARNAME1]:
+
+# remember that in [VARNAME2] you have three values, length, width and height of each package
+# the length is the value in position 0: [VARNAME2][0]
+# the width is the value in position 1: [VARNAME2][1]
+# the height is the value in position 2: [VARNAME2][2]
+# 
+# to find the perimeter of the smallest side, you can sort the values in [VARNAME2]
+# using the function SORTED
+# so that now in [VARNAME2][0] and [VARNAME2][1] you have the 2 smaller values
+
+    [VARNAME2] = sorted([VARNAME2])
+
+# now you simply update [VARNAME5] adding the perimeter of the smallest side
+# and the volume of the package
+# perimeter = 2*(sum of the two smaller sides, the ones in [VARNAME2][0] and [VARNAME2][1])
+# volume = product of the three values in [VARNAME2][0], [VARNAME2][1], [VARNAME2][2]
+    [VARNAME5] += [PERIMETER] + [VOLUME]
+
+# all done, just print the value of your [VARNAME3] out of the loop
+print ([VARNAME5])
+
+################################# CODE WITHOUT COMMENTS #################################
+filename=open("C:\\...\\2015Day2.txt", "r") 
+[VARNAME1] = filename.read()
+[VARNAME1] = [VARNAME1].splitlines()
+
+[VARNAME1] = [[VARNAME2].split('x') for [VARNAME2] in [VARNAME1]]
+[VARNAME1] = [list(map(int, [VARNAME2])) for [VARNAME2] in [VARNAME1]]
+
+# part 1
+[VARNAME3] = [INTEGER]
+
+for [VARNAME2] in [VARNAME1]:
+    [VARNAME4] = [ [VARNAME2][0]*[VARNAME2][1], [VARNAME2][1]*[VARNAME2][2], [VARNAME2][0]*[VARNAME2][2] ]
+    [VARNAME3] += 2*([VARNAME4][0] + [VARNAME4][1] + [VARNAME4]) + min([VARNAME4])
+
+print ([VARNAME3])
+
+# part 2
+[VARNAME5] = [INTEGER]
+
+for [VARNAME2] in [VARNAME1]:
+    [VARNAME2] = sorted([VARNAME2])
+    [VARNAME5] += [PERIMETER] + [VOLUME]
+print ([VARNAME5])
+
+################################# WORKING CODE #################################
