@@ -28,11 +28,11 @@ for [VARNAME3] in [VARNAME1]:
     if ([STATEMENT]):
         [INCREASE VARNAME2 by 1]
 # Else if the symbol is ")", you need to decrease [VARNAME2]
-    elif [(STATEMENT]):
+    elif ([STATEMENT]):
         [DECREASE VARNAME2 by 1]
 
 # you can now print your [VARNAME2] and submit your answer :)
-print ([VARNAME2)
+print ([VARNAME2])
 
 # Part 2: Now, given the same instructions, find the position of the first character that causes him to enter 
 # the basement (floor -1). 
@@ -57,7 +57,7 @@ print ([VARNAME2)
 for [VARNAME3] in [VARNAME1]:
     if ([STATEMENT]):
         [INCREASE VARNAME2 by 1]
-    elif [(STATEMENT]):
+    elif ([STATEMENT]):
         [DECREASE VARNAME2 by 1]
         
 # add an IF statement that checks if Santa is on floor -1
@@ -83,10 +83,10 @@ filename=open("C:\\...\\2015Day1.txt", "r")
 for [VARNAME3] in [VARNAME1]:
     if ([STATEMENT]):
         [INCREASE VARNAME2 by 1]
-    elif [(STATEMENT]):
+    elif ([STATEMENT]):
         [DECREASE VARNAME2 by 1]
 
-print ([VARNAME2)
+print ([VARNAME2])
 
 # part 2
 filename=open("C:\\...\\2015Day1.txt", "r") 
@@ -98,12 +98,42 @@ filename=open("C:\\...\\2015Day1.txt", "r")
 for [VARNAME3] in [VARNAME1]:
     if ([STATEMENT]):
         [INCREASE VARNAME2 by 1]
-    elif [(STATEMENT]):
+    elif ([STATEMENT]):
         [DECREASE VARNAME2 by 1]
     if ([STATEMENT]):
         print([VARNAME4])
         break
     [VARNAME4]+=1
 
+############################## WORKING CODE ############################
+# part 1
+filename=open("C:\\...\\2015Day1.txt", "r") 
+floors = filename.read()
 
+SantaPos = 0
+
+for floor in floors:
+    if (floor=="("):
+        SantaPos+=1
+    elif (floor==")"):
+        SantaPos-=1
+
+print (SantaPos)
+
+# part 2
+filename=open("C:\\...\\2015Day1.txt", "r") 
+floors = filename.read()
+
+SantaPos = 0
+pos = 1
+
+for floor in floors:
+    if (floor=="("):
+        SantaPos+=1
+    elif (floor==")"):
+        SantaPos-=1
+    if (SantaPos==-1):
+        print(pos)
+        break
+    pos+=1
 
