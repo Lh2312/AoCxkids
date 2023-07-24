@@ -14,7 +14,7 @@
 # of wrapping paper. The smallest side for extra paper is 2*3 = 6, for a total of 52+6=58 square feet.
 #
 # My answer: 1598415
-<code style="color : name_color">text</code>
+
 
 # open the input and read it. Your input is a list of dimensions that represent 
 # length * width * height
